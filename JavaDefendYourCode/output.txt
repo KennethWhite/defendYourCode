@@ -1,6 +1,0 @@
-Kenny White
-Numbers added = 22665072
-Numbers multiplied = 27449096116271
-This is a random test of the 
-input file
-12345
