@@ -1,3 +1,0 @@
-This is a random test of the 
-input file
-12345
