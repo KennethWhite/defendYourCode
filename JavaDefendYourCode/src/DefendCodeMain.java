@@ -25,11 +25,11 @@ public class DefendCodeMain {
             num1 = InputUtil.intInput(kb);
             num2 = InputUtil.intInput(kb);
 
-            inputFH = getFile(kb, true);
-            outputFH = getFile(kb, false);
+            inputFH = FileUtil.getFile(kb, true);
+            outputFH = FileUtil.getFile(kb, false);
 
             PasswordUtil.getAndVerifyPassword(kb);
-
+            System.out.printf("Writing data to %s\n", outputFH.getName());
             fout = FileUtil.getPrintWriter(outputFH);
             fout.printf("%s %s\n", fName, lName);
             fout.printf("Numbers added = %d\n",addInts(num1,num2));
@@ -43,8 +43,8 @@ public class DefendCodeMain {
             System.out.println("Execution of main has failed.");
             MyLogger.log(Level.SEVERE, "Execution of main has failed. " +
                             "\n\tfName: {0} \n\tlName: {1} \n\tinputFH: {2} \n\toutputFH: {3} " +
-                            "\n\tnum1: {4,number,long} \n\tnum2: [5,number,long}",
-                    fName,lName, inputFH, outputFH, num1, num2);
+                            "\n\tnum1: {4,number} \n\tnum2: {5,number}\n\t{6}",
+                    fName,lName, inputFH, outputFH, num1, num2, e.getMessage());
         }
         finally {
             MyLogger.closeLogger();
@@ -63,23 +63,6 @@ public class DefendCodeMain {
 
         return name;
     }
-
-
-    private static File getFile(Scanner kb, boolean isInput){
-        String fileType = (isInput) ? "input" : "output";
-        String display = "Please enter name of the " + fileType + " file(must be in local directory): ";
-        String fileName = InputUtil.stringInput(kb, display);
-
-        boolean valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
-        while(!valid){
-            System.out.println("That is not a valid file name, or not in the local directory, please retry.");
-            fileName = InputUtil.stringInput(kb, display);
-            valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
-        }
-        return new File(fileName);
-    }
-
-
 
 
 
