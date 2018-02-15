@@ -26,8 +26,11 @@ public class FileUtil {
     public static boolean isValidOutputFile(String fileName){
         try {
             File fh = new File(fileName);
-            return  !fh.isDirectory() &&
-                    !fh.isAbsolute();
+            boolean valid =!fh.isDirectory() && !fh.isAbsolute();
+            if(fh.exists()){
+                valid = valid && fh.canWrite();
+            }
+            return valid;
         }
         catch (Exception ex){
             return false;
