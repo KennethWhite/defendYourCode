@@ -17,7 +17,6 @@ public class InputUtil {
          return line;
     }
 
-    //TODO: cleanup / make better?
     public static int intInput(final Scanner kb){
         boolean validInt = false;
         int i = 0;
