@@ -37,7 +37,6 @@ public class PasswordUtil {
         while(!passwordPassesRegex(pw)){
             System.out.println("That is not a valid password." +
                     "\nMust be 8 letters long, can contain a-Z, 0-9, !@#$%^&*?-+=");
-            MyLogger.log(Level.WARNING, "Invalid password entered: \n\tPassword:{0}", pw);
             pw = InputUtil.stringInput(kb, "Please enter a password: ");
         }
         return pw;
@@ -55,7 +54,7 @@ public class PasswordUtil {
             outputFH.setReadOnly();
         }
         catch(Exception e){
-            MyLogger.log(Level.SEVERE, "Failed to write password to file: \n\tPassword:{0} \n\t{1}", hashedPW, e.getMessage());
+            MyLogger.log(Level.SEVERE, "Failed to write password to file:  \n\t{0}", hashedPW, e.getMessage());
         }
     }
 
