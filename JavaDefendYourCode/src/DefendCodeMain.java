@@ -58,8 +58,6 @@ public class DefendCodeMain {
         while(!InputUtil.namePassesRegex(name) | name.length() > 50){
             System.out.println("That is not a valid name." +
                     "\nMust be 50 characters or less, cannot contain numbers or special characters");
-            MyLogger.log(Level.WARNING, "Invalid name entered: \n\tName:{0}", name);
-
             name = InputUtil.stringInput(kb, display);
         }
 
@@ -75,8 +73,6 @@ public class DefendCodeMain {
         boolean valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
         while(!valid){
             System.out.println("That is not a valid file name, or not in the local directory, please retry.");
-            MyLogger.log(Level.WARNING, "Invalid file name: \n\tFile name:{0}\n\tisInput:{1}", fileName, isInput);
-
             fileName = InputUtil.stringInput(kb, display);
             valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
         }
