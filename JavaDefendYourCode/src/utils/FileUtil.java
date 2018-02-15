@@ -35,7 +35,7 @@ public class FileUtil {
     }
 
 
-    public static void writeInputToOurput(File input, PrintWriter output){
+    public static void writeInputToOutput(File input, PrintWriter output){
         try{
             Scanner fin = new Scanner(input);
             while (fin.hasNextLine()){
