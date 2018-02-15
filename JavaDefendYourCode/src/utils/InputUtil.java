@@ -17,6 +17,7 @@ public class InputUtil {
         catch (Exception ex){
             System.out.println("That is not valid input, please retry.");
             return stringInput(kb);
+            //TODO: non-recursive
         }
     }
 
@@ -28,6 +29,7 @@ public class InputUtil {
         catch(Exception ex){
             System.out.println("That is not a valid integer, please retry.");
             return intInput(kb);
+            //TODO non-recursive
         }
     }
 

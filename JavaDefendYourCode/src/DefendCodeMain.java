@@ -37,7 +37,7 @@ public class DefendCodeMain {
             fout.printf("%s %s\n", fName, lName);
             fout.printf("Numbers added = %d\n",addInts(num1,num2));
             fout.printf("Numbers multiplied = %d\n",multInts(num1,num2));
-            FileUtil.writeInputToOurput(inputFH, fout);
+            FileUtil.writeInputToOutput(inputFH, fout);
 
             fout.close();
             System.out.println("\nProgram has completed successfully.");
