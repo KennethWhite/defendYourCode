@@ -26,14 +26,14 @@ public class PasswordUtil {
             byte[] existingHash = readPasswordFromFile();
             samePassword = Password.samePassword(pwAgain.toCharArray(), salt, existingHash);
             if(!samePassword){
-                System.out.print("\nIncorrect password, please retry:");
+                System.out.println("\nIncorrect password, please retry:");
             }
         }
         System.out.println("Password verified.");
     }
 
     private static String getPassword(Scanner kb){
-        String pw = InputUtil.stringInput(kb, "Please enter a password: ");
+        String pw = InputUtil.stringInput(kb, "Please enter a password (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=): ");
         while(!passwordPassesRegex(pw)){
             System.out.println("That is not a valid password." +
                     "\nMust be 8 letters long, can contain a-Z, 0-9, !@#$%^&*?-+=");
