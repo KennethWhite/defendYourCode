@@ -56,7 +56,7 @@ public class FileUtil {
             return new PrintWriter(outputFH);
         }
         catch (Exception ex){
-            MyLogger.log(Level.SEVERE, "Cannot open output PrintWriter", outputFH, ex.getMessage());
+            MyLogger.log(Level.SEVERE, "Cannot open output PrintWriter\n\t{0}\n", outputFH, ex.getMessage());
             throw new IOException("Failed to open PrintWriter");
         }
     }

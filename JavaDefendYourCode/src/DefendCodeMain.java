@@ -43,8 +43,8 @@ public class DefendCodeMain {
             System.out.println("Execution of main has failed.");
             MyLogger.log(Level.SEVERE, "Execution of main has failed. " +
                             "\n\tfName: {0} \n\tlName: {1} \n\tinputFH: {2} \n\toutputFH: {3} " +
-                            "\n\tnum1: {4,number,long} \n\tnum2: [5,number,long}",
-                    fName,lName, inputFH, outputFH, num1, num2);
+                            "\n\tnum1: {4,number,long} \n\tnum2: [5,number,long}\n\t",
+                    fName,lName, inputFH, outputFH, num1, num2, e.getMessage());
         }
         finally {
             MyLogger.closeLogger();

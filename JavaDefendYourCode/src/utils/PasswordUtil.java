@@ -54,7 +54,7 @@ public class PasswordUtil {
             outputFH.setReadOnly();
         }
         catch(Exception e){
-            MyLogger.log(Level.SEVERE, "Failed to write password to file:  \n\t{0}", hashedPW, e.getMessage());
+            MyLogger.log(Level.SEVERE, "Failed to write password to file:  \n\t{0}", e.getMessage());
         }
     }
 
