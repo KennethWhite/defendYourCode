@@ -1,5 +1,7 @@
 JavaDefendYourCode/.idea/
 JavaDefendYourCode/out/
 JavaDefendYourCode/ErrorLog.txt
+CDefendYourCode/.idea/
+CDefendYourCode/cmake-build-debug/
 *.iml
 *.txt

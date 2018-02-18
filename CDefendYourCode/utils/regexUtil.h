@@ -1,10 +1,12 @@
 #ifndef commands_h
 #define commands_h
 
-#include "../DYCTester.h"
+#include "inputUtil.h"
 #include "regex.h"
 
-void compileRegex();
-int testRegex(char * str);
-
+void compilePasswordRegex();
+void compileNameRegex();
+int regexIsValid(char *str);
 #endif
+
+
