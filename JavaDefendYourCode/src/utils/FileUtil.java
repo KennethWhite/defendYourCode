@@ -19,7 +19,7 @@ public class FileUtil {
         String fileName = InputUtil.stringInput(kb, display);
 
         boolean valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
-        while(!valid){
+            while(!valid){
             System.out.println("That is not a valid file name, or not in the local directory, or cannot be opened, please retry.");
             fileName = InputUtil.stringInput(kb, display);
             valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
