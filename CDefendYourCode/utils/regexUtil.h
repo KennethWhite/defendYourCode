@@ -4,7 +4,8 @@
 #include "../DYCTester.h"
 #include "regex.h"
 
-void compileRegex();
-int testRegex(char * str);
-
 #endif
+
+void compilePasswordRegex();
+void compileNameRegex();
+int regexIsValid(char *str);
