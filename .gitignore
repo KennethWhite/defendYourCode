@@ -4,4 +4,4 @@ JavaDefendYourCode/ErrorLog.txt
 CDefendYourCode/.idea/
 CDefendYourCode/cmake-build-debug/
 *.iml
-CDefendYourCode/CMakeLists.txt
+*.txt
