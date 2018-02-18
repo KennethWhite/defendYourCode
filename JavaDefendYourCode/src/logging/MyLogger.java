@@ -13,10 +13,6 @@ public class MyLogger {
      */
 
     private static Logger LOGGER;
-
-    /**
-     * A CTOR that sets up the LOGGER with handlers/filters
-     */
     public MyLogger() {
         try {
             LogManager.getLogManager().reset();
