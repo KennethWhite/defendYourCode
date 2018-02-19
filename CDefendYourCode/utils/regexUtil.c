@@ -22,6 +22,15 @@ void compileNameRegex() {
     }
 }
 
+void compileIntRegex() {
+    //optional +/- and then followed by 1-10 digits
+    int result = regcomp(&regex, "^[+-]?([0-9]){1,10}$", REG_EXTENDED);
+    if (result) {
+        fprintf(stderr, "Could not compile int regex\n"); //todo
+        exit(1);
+    }
+}
+
 int regexIsValid(char *str) {
     int result = regexec(&regex, str, 0, NULL, 0);
     int retValue;
