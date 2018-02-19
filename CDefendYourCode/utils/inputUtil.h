@@ -8,7 +8,7 @@
 #include "errno.h"
 
 #define LINE_SIZE 100
-#define INT_LINE_SIZE 11
+#define INT_LINE_SIZE 12    //+ or - and then up to 10 digits and then '\0' ======> length 12
 #define BASE 10
 #endif
 
@@ -17,4 +17,5 @@ void getAndCheckName(char* name, char * firstOrLast);
 long getAndCheckInts(char * firstOrSecond);
 void readInt(char *line);
 int checkIntInput(char * line);
-int strtolErrorCheck(char *line, char *endPtr, long num_entered);
+int strtolAndIntCheck(char *line, char *endPtr, long num_entered);
+void getAndCheckPassword();
