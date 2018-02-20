@@ -3,12 +3,19 @@
 
 
 
-void getAndCheckName(char* name, char * firstOrLast){
+void getAndCheckName(char* name, char* firstOrLast){
     int valid = 0;
+    int ch;
+
     while(!valid){
         printf("Please enter your %s name, must be between 1-50 characters,\n "
                        "cannot contain numbers or special characters other than - and ' : ", firstOrLast);
         fgets(name,LINE_SIZE,stdin);
+
+        //https://stackoverflow.com/questions/30388101/how-to-remove-extra-characters-input-from-fgets-in-c
+        if(!strchr(name, '\n'))     //newline does not exist
+            while((ch = fgetc(stdin)) !='\n' && ch != EOF); //discard everything from input(stdin) buffer
+
         name[LINE_SIZE] = '\0';
         stripNewLine(name);
         compileNameRegex();
@@ -27,27 +34,25 @@ string[strcspn(string, "\n")] = '\0';//remove newline
 
 //https://stackoverflow.com/questions/41669086/how-do-i-read-in-an-array-of-characters-and-convert-to-an-integer-in-c-with-erro
 long getAndCheckInts(char * firstOrSecond){
-    char line[LINE_SIZE];
-    bzero(line, LINE_SIZE);
-    char strToPars[INT_LINE_SIZE];
-    bzero(strToPars, INT_LINE_SIZE);
+    char intLine[INT_LINE_SIZE+1];
+    bzero(intLine, INT_LINE_SIZE);
     char *endPtr = NULL;
-    long num_entered = 0;
+    long int num_entered = 0;
     int valid;
 
     printf("\nEnter %s number, numbers longer than 10 digits will be truncated: ", firstOrSecond);
 
     valid = 0;
     while (!valid){
-        readInt(line);
-        strncpy(strToPars, line, INT_LINE_SIZE);
+        readInt(intLine);
+        stripNewLine(intLine);
 
-        strToPars[INT_LINE_SIZE] = '\0';
-        bzero(line, LINE_SIZE);
+        intLine[INT_LINE_SIZE] = '\0';
 
-        valid = checkIntInput(strToPars);
-        num_entered = strtol(strToPars, &endPtr, BASE);
-        valid = valid && strtolErrorCheck(line,endPtr,num_entered);
+        valid = checkIntInput(intLine);
+        errno = 0;
+        num_entered = strtol(intLine, &endPtr, BASE);
+        valid = valid && strtolAndIntCheck(intLine,endPtr,num_entered);
         if(!valid){
             printf("\nInvalid input, please retry: ");
         }
@@ -55,37 +60,36 @@ long getAndCheckInts(char * firstOrSecond){
     return num_entered;
 }
 
-void readInt(char *line){
-    if (fgets(line, LINE_SIZE, stdin) == NULL) {
+void readInt(char *intLine){
+    if (fgets(intLine, LINE_SIZE, stdin) == NULL) {
         printf("Error reading buffer.\n");
     }
+
+    //https://stackoverflow.com/questions/30388101/how-to-remove-extra-characters-input-from-fgets-in-c
+    int ch;
+    if(!strchr(intLine, '\n'))     //newline does not exist
+        while((ch = fgetc(stdin)) !='\n' && ch != EOF); //extra everything from input(stdin) buffer
+
 }
 
 
-int strtolErrorCheck(char *line, char *endPtr, long num_entered){
-    /* error checking for strtol() */
-    if (endPtr == line) {
-        printf("No digits parsed from input, please retry\n"); //TODO remove, debug purposes
+int strtolAndIntCheck(char *line, char *endPtr, long num_entered){
+
+    if(errno == ERANGE)
+    {
         return 0;
     }
 
-    /* validating that range is within bounds */
-    if (((num_entered >= (int)INT_MAX || num_entered <= (int)INT_MIN) && errno == ERANGE) //TODO comparizon not working correctly, numbers larger than 2.14 billion succeed
-        || (errno != 0 && num_entered == 0)) {
-        printf("number found is out of range, %d - %d.\n", INT_MIN, INT_MAX);
+    if(num_entered > +2147483647 || num_entered < -2147483647)
+    {
         return 0;
     }
-    /* prints out excess characters found */
-    if (*endPtr != '\0') {
-        printf("Further characters found after number, or no number entered: %s\n", endPtr);
-        return 0;
-    }
-    printf("Number entered: %ld\n", num_entered);
+
     return 1;
 }
 
-int checkIntInput(char * line){
-    size_t slen;
+int checkIntInput(char* line){
+
     if (!*line) {
         printf("No user input entered, please retry.\n");
         return 0;
@@ -94,16 +98,27 @@ int checkIntInput(char * line){
         printf("No user input entered, please retry.\n");
         return 0;
     }
-    slen = strlen(line);
-    if (slen > 0) {
-        if (line[slen-1] == '\n') {
-            line[slen-1] = '\0';
-        } else {
-            printf("Number entered is too long, please retry.\n");//TODO remove, debug purposes
-            bzero(line, INT_LINE_SIZE);
-            return 0;
-        }
-        return 1;
-    }
-    return 0;
+
+    compileIntRegex();
+    return regexIsValid(line);
+}
+
+void getAndCheckPassword()
+{
+    char line[LINE_SIZE];
+
+    //TODO
+
+    //get pw
+
+    //hash
+
+    //write to file
+
+    //ask for pw again
+
+    //get hash from file
+
+    //compare first versus second password
+
 }
