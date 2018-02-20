@@ -11,7 +11,24 @@ import java.util.logging.Level;
 
 public class FileUtil {
 
-    public static boolean isValidInputFile(String fileName){
+
+
+    public static File getFile(Scanner kb, boolean isInput){
+        String fileType = (isInput) ? "input" : "output";
+        String display = "Please enter name of the " + fileType + " file(must be in local directory): ";
+        String fileName = InputUtil.stringInput(kb, display);
+
+        boolean valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
+            while(!valid){
+            System.out.println("That is not a valid file name, or not in the local directory, or cannot be opened, please retry.");
+            fileName = InputUtil.stringInput(kb, display);
+            valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
+        }
+        return new File(fileName);
+    }
+
+
+    private static boolean isValidInputFile(String fileName){
         try {
             File fh = new File(fileName);
             return  fh.exists() &&
@@ -23,11 +40,15 @@ public class FileUtil {
             return false;
         }
     }
-    public static boolean isValidOutputFile(String fileName){
+    private static boolean isValidOutputFile(String fileName){
         try {
             File fh = new File(fileName);
-            return  !fh.isDirectory() &&
-                    !fh.isAbsolute();
+            boolean valid = true;
+            if(fh.exists()){
+                valid = fh.canWrite();
+            }
+            return valid && !fh.isDirectory() && !fh.isAbsolute();
+
         }
         catch (Exception ex){
             return false;
@@ -35,7 +56,7 @@ public class FileUtil {
     }
 
 
-    public static void writeInputToOurput(File input, PrintWriter output){
+    public static void writeInputToOutput(File input, PrintWriter output){
         try{
             Scanner fin = new Scanner(input);
             while (fin.hasNextLine()){
@@ -44,7 +65,8 @@ public class FileUtil {
             fin.close();
         }
         catch (Exception ex){
-            MyLogger.log(Level.SEVERE, ex.getMessage());
+            System.out.println("There was a problem writing from input to output file.");
+            MyLogger.log(Level.SEVERE, "Failed to copy input file to output: \n\t{0}", ex.getMessage());
         }
     }
 
@@ -53,7 +75,7 @@ public class FileUtil {
             return new PrintWriter(outputFH);
         }
         catch (Exception ex){
-            MyLogger.log(Level.SEVERE, "Cannot open output PrintWriter", outputFH, ex.getMessage());
+            MyLogger.log(Level.SEVERE, "Cannot open output PrintWriter\n\t{0}\n", outputFH, ex.getMessage());
             throw new IOException("Failed to open PrintWriter");
         }
     }

@@ -6,29 +6,34 @@ import java.util.regex.Pattern;
 
 public class InputUtil {
 
-     public static String stringInput(final Scanner kb){
-        try{
-            String line = kb.nextLine();
-            if(line == null || line.length() == 0){
-                throw new NullPointerException();
-            }
-            return line;
-        }
-        catch (Exception ex){
-            System.out.println("That is not valid input, please retry.");
-            return stringInput(kb);
-        }
+     public static String stringInput(final Scanner kb, final String display){
+         String line;
+
+         do {
+             System.out.print(display);
+             line = kb.nextLine();
+         }while(line == null || line.length() == 0);
+
+         return line;
     }
 
     public static int intInput(final Scanner kb){
-        try{
+        boolean validInt = false;
+        int i = 0;
+
+        while(!validInt){
             System.out.print("Please enter an integer: ");
-            return Integer.parseInt(kb.nextLine());
+            try{
+                i = Integer.parseInt(kb.nextLine());
+                validInt = true;
+            }
+            catch(Exception e)
+            {
+                System.out.println("Invalid integer input.");
+                validInt = false;
+            }
         }
-        catch(Exception ex){
-            System.out.println("That is not a valid integer, please retry.");
-            return intInput(kb);
-        }
+        return i;
     }
 
     public static boolean namePassesRegex(String name){
