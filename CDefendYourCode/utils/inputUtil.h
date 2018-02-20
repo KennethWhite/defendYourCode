@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "regexUtil.h"
+#include "fileUtil.h"
 #include <values.h>
 #include "errno.h"
 
@@ -17,5 +18,5 @@ void getAndCheckName(char* name, char * firstOrLast);
 long getAndCheckInts(char * firstOrSecond);
 void readInt(char *line);
 int checkIntInput(char * line);
-int strtolAndIntCheck(char *line, char *endPtr, long num_entered);
+int strtolAndIntCheck(long num_entered);
 void getAndCheckPassword();
