@@ -1,10 +1,13 @@
 package Password;
 
+import logging.MyLogger;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.logging.Level;
 
 /**
  *
@@ -48,11 +51,11 @@ public class Password {
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             return keyFactory.generateSecret(pbe).getEncoded();
         }
-        catch(Exception e)
+        catch(Exception ex)
         {
-            //TODO: logger
-            //TODO: exception handling
-            return null;
+            System.out.println("Hashing failed");
+            MyLogger.log(Level.SEVERE, "Failed to hash password: \n\t{0}", ex.getMessage());
+            return new byte[0];
         }
         finally {
             pbe.clearPassword();
