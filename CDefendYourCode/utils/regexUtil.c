@@ -31,6 +31,14 @@ void compileIntRegex() {
     }
 }
 
+void compileFileRegex() {
+    int result = regcomp(&regex, "^([A-Za-z0-9\\\\-\\\\.])+.txt$", REG_EXTENDED);
+    if (result) {
+        fprintf(stderr, "Could not compile file regex\n"); //todo
+        exit(1);
+    }
+}
+
 int regexIsValid(char *str) {
     int result = regexec(&regex, str, 0, NULL, 0);
     int retValue;
