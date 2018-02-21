@@ -8,6 +8,8 @@ int main() {
     long int added, multiplied;
     char inputPath[LINE_SIZE+1];
     char outputPath[LINE_SIZE+1];
+    FILE* fout;
+    FILE* fin;
 
     getAndCheckName(fName, "first");
     getAndCheckName(lName, "last");
@@ -20,11 +22,19 @@ int main() {
     getInputPath(inputPath);
     getOutputPath(outputPath);
 
+    //TODO: password
     //getAndCheckPassword();
 
-    //TODO: write to the output
+    fout = openFileWrite(outputPath);
+    fin = openFileRead(inputPath);
+    fprintf(fout, "Name: %s %s\nNumbers entered: %ld, %ld\nNumbers added: %ld\nNumbers multiplied %ld\n"
+                    "Input file to follow:\n\n", fName, lName, num1, num2, added, multiplied);
+    writeInputToOutput(fin, fout);
 
-    //TODO: free any pointers (File*)
+    fclose(fin);
+    fclose(fout);
+
+    printf("\n\nProgram has finished.");
 
 }
 
