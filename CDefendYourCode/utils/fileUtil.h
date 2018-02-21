@@ -4,8 +4,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "regex.h"
+#include <unistd.h>
+#include <string.h>
+#include "regex.h"
+#include "inputUtil.h"
 #endif
 
 FILE* openFileWrite(const char *path);
-int file_isReg(const char *path);
+void getInputPath(char* path);
+void getOutputPath(char* path);
 FILE* openFileRead(const char *path);
+int checkFile(char * filename);
+int checkOutputFile(char* path);

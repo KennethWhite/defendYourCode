@@ -6,6 +6,8 @@ int main() {
     char lName[LINE_SIZE+1];
     long int num1, num2;
     long int added, multiplied;
+    char inputPath[LINE_SIZE+1];
+    char outputPath[LINE_SIZE+1];
 
     getAndCheckName(fName, "first");
     getAndCheckName(lName, "last");
@@ -15,16 +17,14 @@ int main() {
     added = add(num1, num2);
     multiplied = multiply(num1, num2);
 
-    //TODO: input file
-//    if(file_isReg(path))
-//        openFileRead(path)    //check if null
+    getInputPath(inputPath);
+    getOutputPath(outputPath);
 
-    //TODO: output file
-   // openFileWrite(write())  //check if null
-
-    getAndCheckPassword();
+    //getAndCheckPassword();
 
     //TODO: write to the output
+
+    //TODO: free any pointers (File*)
 
 }
 
