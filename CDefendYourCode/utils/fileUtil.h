@@ -3,6 +3,7 @@
 #define CDEFENDYOURCODE_FILEUTIL_H
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/sendfile.h>
 #include <unistd.h>
 #include "regex.h"
 #include <unistd.h>
@@ -15,5 +16,7 @@ FILE* openFileWrite(const char *path);
 void getInputPath(char* path);
 void getOutputPath(char* path);
 FILE* openFileRead(const char *path);
-int checkFile(char * filename);
-int checkOutputFile(char* path);
+int checkFile(char * filename, int isOutput);
+void writeToErrorFile(char message[]);
+off_t fileSize(int fd);
+void writeInputToOutput(FILE* fin, FILE* fout);
