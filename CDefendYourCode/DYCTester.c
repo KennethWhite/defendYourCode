@@ -1,27 +1,13 @@
 #include "DYCTester.h"
 
 
-
-
-//TODO: move these prototypes
-//TODO: move these methods
-long int add(long int num1, long int num2)
-{
-    return num1 + num2;
-}
-long int multiply(long int num1, long int num2)
-{
-    return num1 * num2;
-}
-
-
-
-
 int main() {
     char fName[LINE_SIZE+1];
     char lName[LINE_SIZE+1];
     long int num1, num2;
     long int added, multiplied;
+    char inputPath[LINE_SIZE+1];
+    char outputPath[LINE_SIZE+1];
 
     getAndCheckName(fName, "first");
     getAndCheckName(lName, "last");
@@ -31,14 +17,25 @@ int main() {
     added = add(num1, num2);
     multiplied = multiply(num1, num2);
 
-    //TODO: input file
+    getInputPath(inputPath);
+    getOutputPath(outputPath);
 
-    //TODO: output file
-
-    getAndCheckPassword();
+    //getAndCheckPassword();
 
     //TODO: write to the output
 
+    //TODO: free any pointers (File*)
+
 }
 
+
+
+long int add(long int num1, long int num2)
+{
+    return num1 + num2;
+}
+long int multiply(long int num1, long int num2)
+{
+    return num1 * num2;
+}
 

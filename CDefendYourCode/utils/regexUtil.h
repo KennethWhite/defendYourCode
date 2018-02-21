@@ -7,6 +7,7 @@
 void compilePasswordRegex();
 void compileNameRegex();
 void compileIntRegex();
+void compileFileRegex();
 int regexIsValid(char *str);
 #endif
 
