@@ -21,7 +21,7 @@ void getAndCheckName(char* name, char* firstOrLast){
         compileNameRegex();
         valid = regexIsValid(name);
         if(!valid){
-            printf("That is not a valid name, please retry.");
+            printf("That is not a valid name, please retry.\n");
         }
     }
 }
@@ -34,13 +34,13 @@ string[strcspn(string, "\n")] = '\0';//remove newline
 
 //https://stackoverflow.com/questions/41669086/how-do-i-read-in-an-array-of-characters-and-convert-to-an-integer-in-c-with-erro
 long getAndCheckInts(char * firstOrSecond){
-    char intLine[INT_LINE_SIZE+1];
+    char intLine[INT_LINE_SIZE];
     bzero(intLine, INT_LINE_SIZE);
     char *endPtr = NULL;
     long int num_entered = 0;
     int valid;
 
-    printf("\nEnter %s number, numbers longer than 10 digits will be truncated: ", firstOrSecond);
+    printf("\nEnter %s number, numbers longer than 10 digits will be rejected: ", firstOrSecond);
 
     valid = 0;
     while (!valid){
@@ -52,7 +52,7 @@ long getAndCheckInts(char * firstOrSecond){
         valid = checkIntInput(intLine);
         errno = 0;
         num_entered = strtol(intLine, &endPtr, BASE);
-        valid = valid && strtolAndIntCheck(intLine,endPtr,num_entered);
+        valid = valid && strtolAndIntCheck(num_entered);
         if(!valid){
             printf("\nInvalid input, please retry: ");
         }
@@ -73,7 +73,7 @@ void readInt(char *intLine){
 }
 
 
-int strtolAndIntCheck(char *line, char *endPtr, long num_entered){
+int strtolAndIntCheck(long num_entered){
 
     if(errno == ERANGE)
     {
@@ -84,7 +84,6 @@ int strtolAndIntCheck(char *line, char *endPtr, long num_entered){
     {
         return 0;
     }
-
     return 1;
 }
 
@@ -103,22 +102,39 @@ int checkIntInput(char* line){
     return regexIsValid(line);
 }
 
+
+void getPassword(char* line){
+    int ch, valid = 0;
+    while(!valid){
+        printf("%s", "Please enter a password, (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=)");
+        fgets(line,LINE_SIZE,stdin);
+
+        if(!strchr(line, '\n'))
+            while((ch = fgetc(stdin)) !='\n' && ch != EOF); //discard everything from input(stdin) buffer
+
+        line[LINE_SIZE] = '\0';
+        stripNewLine(line);
+        compilePasswordRegex();
+        valid = regexIsValid(line);
+        if(!valid){
+            printf("That is not a valid password, please retry.\n");
+        }
+    }
+}
+
 void getAndCheckPassword()
 {
     char line[LINE_SIZE];
-
-    //TODO
-
-    //get pw
+    getPassword(line);
 
     //hash
+    //write has to file
+    FILE * pwFile = openFileWrite("password");
 
-    //write to file
-
-    //ask for pw again
+    getPassword(line);
 
     //get hash from file
-
+    pwFile = openFileRead("password");
     //compare first versus second password
 
 }
