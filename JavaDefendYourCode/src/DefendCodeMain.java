@@ -57,7 +57,8 @@ public class DefendCodeMain {
     }
 
     private static String getName(Scanner kb, String nameType){
-        String display = "Please enter your " + nameType + " name: ";
+        String display = "Please enter your " + nameType + " name\n" +
+                "Must be 50 characters or less, cannot contain numbers or special characters except - and ': ";
         String name = InputUtil.stringInput(kb, display);
 
         while(!InputUtil.namePassesRegex(name) | name.length() > 50){
