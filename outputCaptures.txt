@@ -1,0 +1,24 @@
+Java Output capture:
+
+C:\Users\Daric\Desktop\ComputerScience\SecureCoding\defendCodeJavaTest>java Defe
+ndCodeMain
+Please enter your first name: d
+Please enter your last name: s
+Please enter an integer: 12
+Please enter an integer: 45
+Please enter name of the input file(must be in local directory): errorlog.txt
+Please enter name of the output file(must be in local directory): test
+Please enter a password (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=
+): 123bleh!!123bleh!!
+Please re-enter your password at the prompt.
+Please enter a password (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=
+): 123bleh!!123bleh!!
+Password verified.
+Writing data to test
+
+Program has completed successfully.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+C Output capture:
