@@ -1,5 +1,9 @@
 #include "regexUtil.h"
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 regex_t regex;
 char msgbuf[LINE_SIZE];

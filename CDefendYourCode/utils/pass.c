@@ -1,5 +1,10 @@
 #include "pass.h"
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 int hashAndStore(char * password)
 {
     size_t i;
