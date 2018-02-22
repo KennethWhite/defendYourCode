@@ -27,7 +27,7 @@ public class InputUtil {
         int i = 0;
 
         while(!validInt){
-            System.out.print("Please enter an integer: ");
+            System.out.printf("Please enter an integer in range(%d, %d): ", Integer.MIN_VALUE, Integer.MAX_VALUE);
             try{
                 i = Integer.parseInt(kb.nextLine());
                 validInt = true;

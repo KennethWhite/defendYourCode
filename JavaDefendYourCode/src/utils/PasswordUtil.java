@@ -46,11 +46,11 @@ public class PasswordUtil {
 
     private static String getPassword(Scanner kb){
 
-        String pw = InputUtil.stringInput(kb, "Please enter a password (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=): ");
+        String pw = InputUtil.stringInput(kb, "Please enter a password (8-20 characters,can contain a-Z, 0-9, !@#$%^&*?-+=): ");
 
         while(!passwordPassesRegex(pw)){
             System.out.println("That is not a valid password." +
-                    "\nMust be 8 letters long, can contain a-Z, 0-9, !@#$%^&*?-+=");
+                    "\nMust be 8-20 letters long, can contain a-Z, 0-9, !@#$%^&*?-+=");
             pw = InputUtil.stringInput(kb, "Please enter a password: ");
         }
         return pw;
