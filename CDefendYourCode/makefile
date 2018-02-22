@@ -1,5 +1,5 @@
 CXX=gcc
-FLAGS=-pedantic -Wall -Wextra -Werror
+FLAGS=-pedantic -Wall -Wextra -Werror -lcrypt
 
 TARGET=dyc
 SOURCES=$(wildcard *.c)\

@@ -1,5 +1,9 @@
 #include "regexUtil.h"
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 regex_t regex;
 char msgbuf[LINE_SIZE];
@@ -8,7 +12,7 @@ char msgbuf[LINE_SIZE];
 
 void compilePasswordRegex() {
     //8-20 characters, can contain a-Z, 1-9 and !@#$%^&*\-=+?
-    int result = regcomp(&regex, "^([A-Za-z0-9!@#$%^&*\\-=+?]){8,20}$", REG_EXTENDED);
+    int result = regcomp(&regex, "^(.){8,99}$", REG_EXTENDED);
     if (result) {
         writeToErrorFile("Could not compile password regex\n");
         exit(1);
@@ -33,7 +37,7 @@ void compileIntRegex() {
 }
 
 void compileFileRegex() {
-    int result = regcomp(&regex, "^([A-Za-z0-9\\\\-\\\\.])+.txt$", REG_EXTENDED);
+    int result = regcomp(&regex, "^([A-Za-z0-9\\\\-\\\\.]){1,20}(.txt)$", REG_EXTENDED);
     if (result) {
         writeToErrorFile("Could not compile file regex\n");
         exit(1);

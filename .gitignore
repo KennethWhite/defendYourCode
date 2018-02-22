@@ -5,3 +5,5 @@ CDefendYourCode/.idea/
 CDefendYourCode/cmake-build-debug/
 *.iml
 *.txt
+!readme.txt
+!outputCaptures.txt

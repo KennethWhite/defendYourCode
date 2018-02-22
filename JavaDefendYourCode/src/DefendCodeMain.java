@@ -7,7 +7,11 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-//Error
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 public class DefendCodeMain {
 
     public static void main(String ...args){
@@ -29,6 +33,7 @@ public class DefendCodeMain {
             outputFH = FileUtil.getFile(kb, false);
 
             PasswordUtil.getAndVerifyPassword(kb);
+
             System.out.printf("Writing data to %s\n", outputFH.getName());
             fout = FileUtil.getPrintWriter(outputFH);
             fout.printf("%s %s\n", fName, lName);
@@ -52,7 +57,8 @@ public class DefendCodeMain {
     }
 
     private static String getName(Scanner kb, String nameType){
-        String display = "Please enter your " + nameType + " name: ";
+        String display = "Please enter your " + nameType + " name\n" +
+                "Must be 50 characters or less, cannot contain numbers or special characters except - and ': ";
         String name = InputUtil.stringInput(kb, display);
 
         while(!InputUtil.namePassesRegex(name) | name.length() > 50){
