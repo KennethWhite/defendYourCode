@@ -7,6 +7,7 @@
 #include "fileUtil.h"
 #include <values.h>
 #include "errno.h"
+#include "pass.h"
 
 
 

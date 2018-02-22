@@ -22,3 +22,28 @@ Program has completed successfully.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 C Output capture:
+
+d-sage@ubuntu:~/Desktop/defendYourCodeTester$ ./dyc
+Please enter your first name, must be between 1-50 characters,
+ cannot contain numbers or special characters other than - and ' : d
+Please enter your last name, must be between 1-50 characters,
+ cannot contain numbers or special characters other than - and ' : s
+
+Enter first number, numbers longer than 10 digits will be rejected: 1
+
+Enter second number, numbers longer than 10 digits will be rejected: 2
+Please enter name of input file (file must be in current directory and you can only enter the file name. 
+Not a direct path. Characters can be [a-zA-Z0-9-.]) 1 to 20 chars and must end in .txt)
+rwx.txt
+Please enter name of output file (file must be in current directory and you can only enter the file name. 
+Not a direct path. Characters can be [a-zA-Z0-9\-.] 1 to 20 chars and must end in .txt)
+WARNING: Output file will be overwritten if it exists.
+test.txt
+Please enter a password, (Minimum 8 characters and max 99, can contain any character that is not a newline (\n)
+1234qwer
+Enter password again to check if its accepted, (Minimum 8 characters and max 99, can contain any character that is not a newline (\n)
+1234qwer
+passwords match
+
+Wrote input to output file.
+
