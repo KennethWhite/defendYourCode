@@ -12,7 +12,7 @@ void getOutputPath(char* path){
 
     while(!result)
     {
-        printf("%s", "Please enter name of output file (file must be in current directory and you can only enter the file name."
+        printf("\n%s", "Please enter name of output file (file must be in current directory and you can only enter the file name."
                 " \nNot a direct path. Characters can be [a-zA-Z0-9\\-.] 1 to 20 chars and must end in .txt)\n"
                 "WARNING: Output file will be overwritten if it exists.\n");
         fgets(path, LINE_SIZE, stdin);
@@ -26,7 +26,7 @@ void getInputPath(char* path) {
     int result= 0;
 
     while(!result){
-        printf("%s", "Please enter name of input file (file must be in current directory and you can only enter the file name."
+        printf("\n%s", "Please enter name of input file (file must be in current directory and you can only enter the file name."
                 " \nNot a direct path. Characters can be [a-zA-Z0-9-.]) 1 to 20 chars and must end in .txt)\n");
         fgets(path, LINE_SIZE, stdin);
         result = checkFile(path, 0);

@@ -11,7 +11,7 @@ void getAndCheckName(char* name, char* firstOrLast){
     int ch;
 
     while(!valid){
-        printf("Please enter your %s name, must be between 1-50 characters,\n "
+        printf("\nPlease enter your %s name, must be between 1-50 characters,\n "
                        "cannot contain numbers or special characters other than - and ' : ", firstOrLast);
         fgets(name,LINE_SIZE,stdin);
 
@@ -128,7 +128,7 @@ void getAndCheckPassword()
     char* pass = calloc(LINE_SIZE, sizeof(char));
 
     while(!valid) {
-        printf("%s",
+        printf("\n%s",
                "Please enter a password, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
         fgets(pass, LINE_SIZE, stdin);
         valid = hashAndStore(pass);
@@ -139,10 +139,13 @@ void getAndCheckPassword()
     valid = 0;
 
     while(!valid) {
-        printf("%s",
+        printf("\n%s",
                "Enter password again to check if its accepted, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
         fgets(pass, LINE_SIZE, stdin);
         valid = getAndCheckPass(pass);
+        if(!valid){
+            printf("\nPassword did not match, please try again.\n\n");
+        }
     }
 
     free(pass);
