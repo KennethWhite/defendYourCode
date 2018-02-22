@@ -26,8 +26,7 @@ int main() {
     getInputPath(inputPath);
     getOutputPath(outputPath);
 
-    //TODO: password
-    //getAndCheckPassword();
+    getAndCheckPassword();
 
     fout = openFileWrite(outputPath);
     fin = openFileRead(inputPath);

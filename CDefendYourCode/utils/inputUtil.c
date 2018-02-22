@@ -121,18 +121,28 @@ void getPassword(char* line){
 
 void getAndCheckPassword()
 {
-    char line[LINE_SIZE];
-    getPassword(line);
+    int valid = 0;
+    char* pass = calloc(LINE_SIZE, sizeof(char));
 
-    //hash
-    //write has to file
+    while(!valid) {
+        printf("%s",
+               "Please enter a password, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
+        fgets(pass, LINE_SIZE, stdin);
+        valid = hashAndStore(pass);
+    }
 
+    free(pass);
+    pass = calloc(LINE_SIZE, sizeof(char));
+    valid = 0;
 
-    getPassword(line);
+    while(!valid) {
+        printf("%s",
+               "Enter password again to check if its accepted, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
+        fgets(pass, LINE_SIZE, stdin);
+        valid = getAndCheckPass(pass);
+    }
 
-    //get hash from file
-
-    //compare first versus second password
+    free(pass);
 
 }
 

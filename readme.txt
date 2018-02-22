@@ -55,7 +55,7 @@ java DefendCodeMain				-> runs the program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 C Instructions:
--We use gcc version 5.4.0 or later with the following flags: -pedantic -Wall -Wextra -Werror
+-We use gcc version 5.4.0 or later with the following flags: -pedantic -Wall -Wextra -Werror -lcrypt
 -We used Ubuntu 16.x 64 bit OS
 
 command line instructions:
