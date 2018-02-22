@@ -4,6 +4,11 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 public class InputUtil {
 
      public static String stringInput(final Scanner kb, final String display){

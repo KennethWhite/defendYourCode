@@ -8,20 +8,28 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 public class FileUtil {
 
-
-
     public static File getFile(Scanner kb, boolean isInput){
+
         String fileType = (isInput) ? "input" : "output";
         String display = "Please enter name of the " + fileType + " file(must be in local directory): ";
+
         String fileName = InputUtil.stringInput(kb, display);
 
         boolean valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
-            while(!valid){
+
+        while(!valid){
+
             System.out.println("That is not a valid file name, or not in the local directory, or cannot be opened, please retry.");
+
             fileName = InputUtil.stringInput(kb, display);
+
             valid = (isInput) ? FileUtil.isValidInputFile(fileName) : FileUtil.isValidOutputFile(fileName);
         }
         return new File(fileName);
