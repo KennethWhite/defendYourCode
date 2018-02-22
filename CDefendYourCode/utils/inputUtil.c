@@ -1,7 +1,10 @@
 
 #include "inputUtil.h"
 
-
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 void getAndCheckName(char* name, char* firstOrLast){
     int valid = 0;

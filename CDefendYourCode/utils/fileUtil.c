@@ -1,7 +1,10 @@
 
 #include "fileUtil.h"
 
-
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 void getOutputPath(char* path){
 
