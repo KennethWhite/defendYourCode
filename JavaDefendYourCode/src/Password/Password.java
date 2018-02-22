@@ -9,6 +9,11 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.logging.Level;
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 /**
  *
  * Credit to: https://stackoverflow.com/questions/18142745/how-do-i-generate-a-salt-in-java-for-salted-hash
@@ -68,8 +73,6 @@ public class Password {
     public static boolean samePassword(char[] givenPassword, byte[] salt, byte[] expectedHash)
     {
         byte[] givenHash = hash(givenPassword, salt);
-
-        //Arrays.fill(password, '0');
 
         if(givenHash.length != expectedHash.length)
         {

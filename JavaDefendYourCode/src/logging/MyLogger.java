@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.text.Format;
 import java.util.logging.*;
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 //Singleton pattern of a logger
 public class MyLogger {
     /* Filehandlers are connected to their respective log files, with APPEND set to TRUE

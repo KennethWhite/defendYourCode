@@ -1,5 +1,9 @@
 #include "DYCTester.h"
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 int main() {
     char fName[LINE_SIZE+1];
