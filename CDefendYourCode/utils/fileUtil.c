@@ -57,6 +57,12 @@ int checkFile(char * filename, int isOutput)
     int isvalid = regexIsValid(filename);
     if(isvalid)
     {
+		
+		if(!checkNames(filename, isOutput))
+		{
+			return 0;
+		}
+		
         char resolvedpath[LINE_SIZE];
         realpath(filename, resolvedpath);
         FILE * fp;
@@ -75,6 +81,38 @@ int checkFile(char * filename, int isOutput)
 
     printf("File validation failed, please retry.\n");
     return 0;
+}
+
+int checkNames(char* fname, int isOutput)
+{
+	
+	int result;
+	char tmpFname[LINE_SIZE];
+	
+	strncpy(tmpFname, fname, LINE_SIZE);
+	
+	size_t len = strlen(tmpFname);
+	
+	for(size_t i = 0; i < len; i++)
+	{
+		tmpFname[i] = tolower(tmpFname[i]);
+	}
+	
+	//result = strncmp(fname, tmpFname, len);
+	if((strncmp(fname, "password.txt", len) == 0) && strlen(fname) == 12)
+	{
+		return 0;
+	}
+	
+	if(isOutput)
+	{
+		if((strncmp(fname, "errorlog.txt", len) == 0) && strlen(fname) == 12)
+		{
+			return 0;
+		}
+	}
+	
+	return 1;//true
 }
 
 

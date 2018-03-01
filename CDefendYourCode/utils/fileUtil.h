@@ -17,6 +17,7 @@ void getInputPath(char* path);
 void getOutputPath(char* path);
 FILE* openFileRead(const char *path);
 int checkFile(char * filename, int isOutput);
+int checkNames(char* fname, int isOutput);
 void writeToErrorFile(char message[]);
 off_t fileSize(int fd);
 void writeInputToOutput(FILE* fin, FILE* fout);
