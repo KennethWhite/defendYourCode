@@ -35,8 +35,13 @@ public class FileUtil {
         return new File(fileName);
     }
 
-
     private static boolean isValidInputFile(String fileName){
+
+        if(fileName.equals("password.txt"))
+        {
+            return false;
+        }
+
         try {
             File fh = new File(fileName);
             return  fh.exists() &&
@@ -49,6 +54,12 @@ public class FileUtil {
         }
     }
     private static boolean isValidOutputFile(String fileName){
+
+        if(fileName.equalsIgnoreCase("password.txt") || fileName.equalsIgnoreCase("ErrorLog.txt"))
+        {
+            return false;
+        }
+
         try {
             File fh = new File(fileName);
             boolean valid = true;

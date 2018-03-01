@@ -30,7 +30,10 @@ public class DefendCodeMain {
             num2 = InputUtil.intInput(kb);
 
             inputFH = FileUtil.getFile(kb, true);
-            outputFH = FileUtil.getFile(kb, false);
+            do{
+                System.out.println("Input and Output Filenames cannot be the same");
+                outputFH = FileUtil.getFile(kb, false);
+            }while(inputFH.getName().equalsIgnoreCase(outputFH.getName()));
 
             PasswordUtil.getAndVerifyPassword(kb);
 
