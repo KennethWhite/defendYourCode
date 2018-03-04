@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include "regex.h"
 #include <unistd.h>
+#include <ctype.h>
 #include <string.h>
 #include "regex.h"
 #include "inputUtil.h"

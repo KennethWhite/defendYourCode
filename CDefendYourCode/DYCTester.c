@@ -1,11 +1,12 @@
 #include "DYCTester.h"
 
-/*
-Team: Abusement Park 3.0
-Members: Kenny White, Jordan Lambert, Daric Sage
- */
 
-int main() {
+//Team: Abusement Park 3.0
+//Members: Kenny White, Jordan Lambert, Daric Sage
+
+
+int main() 
+{
     char fName[LINE_SIZE+1];
     char lName[LINE_SIZE+1];
     long int num1, num2;
@@ -26,7 +27,7 @@ int main() {
     getInputPath(inputPath);
 	do{
 		getOutputPath(outputPath);
-	)while(!checkStrings(inputPath, outputPath));
+	}while(!checkStrings(inputPath, outputPath));
 
     getAndCheckPassword();
 
@@ -63,10 +64,10 @@ int checkStrings(char* first, char* second)
 
 long long add(long int num1, long int num2)
 {
-    return num1 + num2;
+    return (long long)num1 + num2;
 }
 long long multiply(long int num1, long int num2)
 {
-    return num1 * num2;
+    return (long long)num1 * num2;
 }
 
