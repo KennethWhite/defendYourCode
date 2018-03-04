@@ -58,7 +58,7 @@ int checkStrings(char* first, char* second)
 	if(result == 0)
 		return 0;
 	
-	return 0;	
+	return 1;	
 	
 }
 
