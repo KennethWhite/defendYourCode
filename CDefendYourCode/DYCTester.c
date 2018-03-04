@@ -51,14 +51,14 @@ int checkStrings(char* first, char* second)
 	size_t len2 = strlen(second);
 	
 	if(len1 != len2)
-		return 0;
+		return 1;
 	
 	result = strncmp(first, second, len1);
 	
 	if(result == 0)
 		return 0;
 	
-	return 1;	
+	return 0;	
 	
 }
 
