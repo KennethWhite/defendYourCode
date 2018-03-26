@@ -1,0 +1,79 @@
+d s
+Numbers added = 3
+Numbers multiplied = 2
+d s
+Numbers added = 3
+Numbers multiplied = 2
+Feb 14, 2018 6:32:57 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid name entered: 
+	Name:2
+Feb 14, 2018 6:33:09 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid file name: 
+	File name:blah
+	isInput:true
+Feb 14, 2018 6:36:05 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid name entered: 
+	Name:1
+Feb 14, 2018 6:36:14 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid file name: 
+	File name:dasx
+	isInput:true
+Feb 14, 2018 8:47:20 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid name entered: 
+	Name:2
+Feb 14, 2018 8:47:45 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid password entered: 
+	Password:!d3
+Feb 14, 2018 8:47:48 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid password entered: 
+	Password:!@d
+Feb 14, 2018 8:47:56 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid password entered: 
+	Password:123456789
+Feb 14, 2018 8:48:06 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Execution of main has failed. 
+	fName: d 
+	lName: s 
+	inputFH: errorlog.txt 
+	outputFH: test 
+	num1: long1 
+	num2: [5,number,long}
+Feb 14, 2018 8:50:23 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Execution of main has failed. 
+	fName: d 
+	lName: s 
+	inputFH: errorlog.txt 
+	outputFH: test 
+	num1: long1 
+	num2: [5,number,long}
+Feb 14, 2018 8:53:08 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Execution of main has failed. 
+	fName: d 
+	lName: s 
+	inputFH: errorlog.txt 
+	outputFH: test 
+	num1: long1 
+	num2: [5,number,long}
+Feb 14, 2018 9:03:04 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Execution of main has failed. 
+	fName: d 
+	lName: s 
+	inputFH: errorlog.txt 
+	outputFH: test 
+	num1: long1 
+	num2: [5,number,long}
+Feb 14, 2018 9:04:47 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Execution of main has failed. 
+	fName: d 
+	lName: s 
+	inputFH: errorlog.txt 
+	outputFH: test 
+	num1: long1 
+	num2: [5,number,long}
+Feb 14, 2018 9:07:08 PM java.util.logging.LogManager$RootLogger log
+WARNING: Invalid file name: 
+	File name:errorlog
+	isInput:true
+Feb 17, 2018 2:01:32 PM java.util.logging.LogManager$RootLogger log
+SEVERE: Failed to copy input file to output: 
+	aclreadno.txt (Access is denied)

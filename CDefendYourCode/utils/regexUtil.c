@@ -1,5 +1,9 @@
 #include "regexUtil.h"
 
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 regex_t regex;
 char msgbuf[LINE_SIZE];
@@ -7,9 +11,10 @@ char msgbuf[LINE_SIZE];
 ///Source: https://stackoverflow.com/questions/1085083/regular-expressions-in-c-examples
 
 void compilePasswordRegex() {
-    int result = regcomp(&regex, "^([A-Za-z0-9!@#$%^&*\\-=+?]){8,20}$", REG_EXTENDED);
+    //8-20 characters, can contain a-Z, 1-9 and !@#$%^&*\-=+?
+    int result = regcomp(&regex, "^(.){8,99}$", REG_EXTENDED);
     if (result) {
-        fprintf(stderr, "Could not compile password regex\n"); //todo
+        writeToErrorFile("Could not compile password regex\n");
         exit(1);
     }
 }
@@ -17,7 +22,7 @@ void compilePasswordRegex() {
 void compileNameRegex() {
     int result = regcomp(&regex, "^([A-Za-z]-?'?){1,50}$", REG_EXTENDED);
     if (result) {
-        fprintf(stderr, "Could not compile name regex\n"); //todo
+        writeToErrorFile("Could not compile name regex\n");
         exit(1);
     }
 }
@@ -26,7 +31,15 @@ void compileIntRegex() {
     //optional +/- and then followed by 1-10 digits
     int result = regcomp(&regex, "^[+-]?([0-9]){1,10}$", REG_EXTENDED);
     if (result) {
-        fprintf(stderr, "Could not compile int regex\n"); //todo
+        writeToErrorFile("Could not compile int regex\n");
+        exit(1);
+    }
+}
+
+void compileFileRegex() {
+    int result = regcomp(&regex, "^([A-Za-z0-9\\\\-\\\\.]){1,20}(.txt)$", REG_EXTENDED);
+    if (result) {
+        writeToErrorFile("Could not compile file regex\n");
         exit(1);
     }
 }
@@ -39,9 +52,11 @@ int regexIsValid(char *str) {
     } else if (result == REG_NOMATCH) {
         retValue = 0;
     } else {
-        //TODO write to the output/error file
+
         regerror(result, &regex, msgbuf, sizeof(msgbuf));
-        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+        char error[512];
+        sprintf(error, "Regex match failed:\n%s\n", msgbuf);
+        writeToErrorFile(error);
         retValue = 0;
     }
     /* Free memory allocated to the pattern buffer by regcomp() */

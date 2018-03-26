@@ -1,14 +1,17 @@
 
 #include "inputUtil.h"
 
-
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 void getAndCheckName(char* name, char* firstOrLast){
     int valid = 0;
     int ch;
 
     while(!valid){
-        printf("Please enter your %s name, must be between 1-50 characters,\n "
+        printf("\nPlease enter your %s name, must be between 1-50 characters,\n "
                        "cannot contain numbers or special characters other than - and ' : ", firstOrLast);
         fgets(name,LINE_SIZE,stdin);
 
@@ -32,7 +35,6 @@ string[strcspn(string, "\n")] = '\0';//remove newline
 
 
 
-//https://stackoverflow.com/questions/41669086/how-do-i-read-in-an-array-of-characters-and-convert-to-an-integer-in-c-with-erro
 long getAndCheckInts(char * firstOrSecond){
     char intLine[INT_LINE_SIZE];
     bzero(intLine, INT_LINE_SIZE);
@@ -63,12 +65,11 @@ long getAndCheckInts(char * firstOrSecond){
 void readInt(char *intLine){
     if (fgets(intLine, LINE_SIZE, stdin) == NULL) {
         printf("Error reading buffer.\n");
+        writeToErrorFile("Error reading from buffer in readInt()\n");
     }
-
-    //https://stackoverflow.com/questions/30388101/how-to-remove-extra-characters-input-from-fgets-in-c
     int ch;
     if(!strchr(intLine, '\n'))     //newline does not exist
-        while((ch = fgetc(stdin)) !='\n' && ch != EOF); //extra everything from input(stdin) buffer
+        while((ch = fgetc(stdin)) !='\n' && ch != EOF); //remove everything extra from input(stdin) buffer
 
 }
 
@@ -97,7 +98,6 @@ int checkIntInput(char* line){
         printf("No user input entered, please retry.\n");
         return 0;
     }
-
     compileIntRegex();
     return regexIsValid(line);
 }
@@ -106,7 +106,7 @@ int checkIntInput(char* line){
 void getPassword(char* line){
     int ch, valid = 0;
     while(!valid){
-        printf("%s", "Please enter a password, (Minimum 8 characters,can contain a-Z, 0-9, !@#$%^&*?-+=)");
+        printf("\n%s", "Please enter a password, (Minimum 8 characters, can contain a-Z, 0-9, !@#$%^&*?-+=): ");
         fgets(line,LINE_SIZE,stdin);
 
         if(!strchr(line, '\n'))
@@ -117,24 +117,38 @@ void getPassword(char* line){
         compilePasswordRegex();
         valid = regexIsValid(line);
         if(!valid){
-            printf("That is not a valid password, please retry.\n");
+            printf("\nThat is not a valid password, please retry.\n");
         }
     }
 }
 
 void getAndCheckPassword()
 {
-    char line[LINE_SIZE];
-    getPassword(line);
+    int valid = 0;
+    char* pass = calloc(LINE_SIZE, sizeof(char));
 
-    //hash
-    //write has to file
-    FILE * pwFile = openFileWrite("password");
+    while(!valid) {
+        printf("\n%s",
+               "Please enter a password, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
+        fgets(pass, LINE_SIZE, stdin);
+        valid = hashAndStore(pass);
+    }
 
-    getPassword(line);
+    free(pass);
+    pass = calloc(LINE_SIZE, sizeof(char));
+    valid = 0;
 
-    //get hash from file
-    pwFile = openFileRead("password");
-    //compare first versus second password
+    while(!valid) {
+        printf("\n%s",
+               "Enter password again to check if its accepted, (Minimum 8 characters and max 99, can contain any character that is not a newline (\\n)\n");
+        fgets(pass, LINE_SIZE, stdin);
+        valid = getAndCheckPass(pass);
+        if(!valid){
+            printf("\nPassword did not match, please try again.\n\n");
+        }
+    }
+
+    free(pass);
 
 }
+

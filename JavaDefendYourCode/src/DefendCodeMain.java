@@ -7,7 +7,11 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-//Error
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
+
 public class DefendCodeMain {
 
     public static void main(String ...args){
@@ -26,9 +30,13 @@ public class DefendCodeMain {
             num2 = InputUtil.intInput(kb);
 
             inputFH = FileUtil.getFile(kb, true);
-            outputFH = FileUtil.getFile(kb, false);
+            do{
+                System.out.println("Input and Output Filenames cannot be the same");
+                outputFH = FileUtil.getFile(kb, false);
+            }while(inputFH.getName().equalsIgnoreCase(outputFH.getName()));
 
             PasswordUtil.getAndVerifyPassword(kb);
+
             System.out.printf("Writing data to %s\n", outputFH.getName());
             fout = FileUtil.getPrintWriter(outputFH);
             fout.printf("%s %s\n", fName, lName);
@@ -52,7 +60,8 @@ public class DefendCodeMain {
     }
 
     private static String getName(Scanner kb, String nameType){
-        String display = "Please enter your " + nameType + " name: ";
+        String display = "Please enter your " + nameType + " name\n" +
+                "Must be 50 characters or less, cannot contain numbers or special characters except - and ': ";
         String name = InputUtil.stringInput(kb, display);
 
         while(!InputUtil.namePassesRegex(name) | name.length() > 50){

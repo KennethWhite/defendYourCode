@@ -1,9 +1,13 @@
 package logging;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.text.Format;
 import java.util.logging.*;
+
+/*
+Team: Abusement Park 3.0
+Members: Kenny White, Jordan Lambert, Daric Sage
+ */
 
 //Singleton pattern of a logger
 public class MyLogger {
@@ -25,7 +29,7 @@ public class MyLogger {
             errOut.setFormatter(format);
             LOGGER.addHandler(errOut);
 
-        } catch (IOException ex) { //TODO
+        } catch (IOException ex) {
             System.out.println("Error creating log files");
             System.out.println(ex.getMessage() + "\n");
             ex.printStackTrace();

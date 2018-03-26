@@ -1,9 +1,11 @@
 CXX=gcc
-FLAGS=-pedantic -Wall -Wextra -Werror
+FLAGS=-pedantic -Wall -Wextra -Werror -lcrypt
 
 TARGET=dyc
-SOURCES=$(wildcard *.c)
-HEADERS=$(wildcard *.h)
+SOURCES=$(wildcard *.c)\
+	$(wildcard utils/*.c)
+HEADERS=$(wildcard *.h)\
+	$(wildcard utils/*.h)
 OBJECTS=$(patsubst %.c,%.o,$(SOURCES))
 
 compile: $(TARGET)
