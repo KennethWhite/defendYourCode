@@ -1,3 +1,6 @@
+This was an assignemnt for my Secure Coding class to practice safely getting input from users
+
+
 # defendYourCode
 Defend your code!
 
