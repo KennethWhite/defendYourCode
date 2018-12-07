@@ -1,4 +1,4 @@
-This was an assignemnt for my Secure Coding class to practice safely getting input from users
+This was an assignment for my Secure Coding class to practice safely getting input from users
 
 
 # defendYourCode
